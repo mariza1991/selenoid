@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class YandexSequrityTest extends BaseTest {
 
-    @Test(dataProvider = "xssTests")
+    @Test(dataProvider = "xssTests", enabled = true)
     public void test(String xssQuery){
         System.out.println(xssQuery);
         driver.get("http://yandex.ru");

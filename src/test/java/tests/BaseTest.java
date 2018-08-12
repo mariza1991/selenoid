@@ -15,13 +15,13 @@ public class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void beforeTest(){
-        driver = WebdriverManager.getDriver();
+        WebdriverManager manager = new WebdriverManager();
+        driver = manager.getDriver();
         wait = new WebDriverWait(driver, timeout);
     }
 
     @AfterClass
     public void afterClass(){
         driver.quit();
-        driver = null;
     }
 }

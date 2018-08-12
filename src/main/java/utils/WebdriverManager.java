@@ -12,13 +12,13 @@ import java.net.URL;
 
 public class WebdriverManager {
 
-    private static WebDriver driver;
+    private WebDriver driver;
 
     private static final String PATH_TO_PROPERTIES = "properties/settings.properties";
 
     private static final String PROXY = PropertyReader.getPropertyFromFile(PATH_TO_PROPERTIES, "proxy");
 
-    public static WebDriver getDriver() {
+    public WebDriver getDriver() {
         String browserName =
                 PropertyReader.getPropertyFromFile(PATH_TO_PROPERTIES, "browser");
         if (driver == null) {
@@ -43,7 +43,7 @@ public class WebdriverManager {
         return driver;
     }
 
-    private static WebDriver createChromeDriver(Boolean headless){
+    private WebDriver createChromeDriver(Boolean headless){
         if (headless) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
@@ -54,7 +54,7 @@ public class WebdriverManager {
         return driver;
     }
 
-    private static WebDriver createChromeRemote(){
+    private WebDriver createChromeRemote(){
         try {
             driver = new RemoteWebDriver(new URL("http://192.168.0.3:4444/wd/hub"), //my hub address
                     DesiredCapabilities.chrome());
@@ -65,7 +65,7 @@ public class WebdriverManager {
         return driver;
     }
 
-    private static WebDriver createSelenoidRemote(){
+    private WebDriver createSelenoidRemote(){
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
